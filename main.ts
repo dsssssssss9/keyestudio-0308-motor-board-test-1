@@ -33,9 +33,10 @@
  * 
  * Speed PWM: P2
  */
-input.onButtonPressed(Button.A, function () {
-    FWD_Left()
-    basic.pause(500)
+input.onButtonPressed(Button.AB, function () {
+    REV_Left()
+    RWD_Right()
+    basic.pause(1000)
     ALL_STOP()
 })
 function FWD_Left () {
@@ -43,27 +44,26 @@ function FWD_Left () {
     pins.digitalWritePin(DigitalPin.P13, 1)
     pins.digitalWritePin(DigitalPin.P12, 0)
 }
+input.onButtonPressed(Button.A, function () {
+    FWD_Left()
+    basic.pause(500)
+    ALL_STOP()
+})
 function RWD_Right () {
     pins.analogWritePin(AnalogPin.P2, 150)
     pins.digitalWritePin(DigitalPin.P15, 1)
     pins.digitalWritePin(DigitalPin.P16, 0)
 }
-input.onButtonPressed(Button.AB, function () {
-    REV_Left()
-    RWD_Right()
-    basic.pause(1000)
-    ALL_STOP()
-})
-input.onButtonPressed(Button.B, function () {
-    FWD_Right()
-    basic.pause(500)
-    ALL_STOP()
-})
 function FWD_Right () {
     pins.analogWritePin(AnalogPin.P2, 150)
     pins.digitalWritePin(DigitalPin.P16, 1)
     pins.digitalWritePin(DigitalPin.P15, 0)
 }
+input.onButtonPressed(Button.B, function () {
+    FWD_Right()
+    basic.pause(500)
+    ALL_STOP()
+})
 function REV_Left () {
     pins.analogWritePin(AnalogPin.P1, 150)
     pins.digitalWritePin(DigitalPin.P12, 1)
