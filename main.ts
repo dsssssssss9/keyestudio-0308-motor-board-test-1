@@ -35,41 +35,43 @@
  */
 input.onButtonPressed(Button.A, function () {
     FWD_Left()
+    basic.pause(500)
+    ALL_STOP()
 })
 function FWD_Left () {
     pins.analogWritePin(AnalogPin.P1, 150)
     pins.digitalWritePin(DigitalPin.P13, 1)
     pins.digitalWritePin(DigitalPin.P12, 0)
-    basic.pause(500)
-    pins.analogWritePin(AnalogPin.P1, 0)
 }
 function RWD_Right () {
     pins.analogWritePin(AnalogPin.P2, 150)
     pins.digitalWritePin(DigitalPin.P15, 1)
     pins.digitalWritePin(DigitalPin.P16, 0)
-    basic.pause(500)
-    pins.analogWritePin(AnalogPin.P2, 0)
 }
 input.onButtonPressed(Button.AB, function () {
     REV_Left()
     RWD_Right()
+    basic.pause(1000)
+    ALL_STOP()
 })
 input.onButtonPressed(Button.B, function () {
     FWD_Right()
+    basic.pause(500)
+    ALL_STOP()
 })
 function FWD_Right () {
     pins.analogWritePin(AnalogPin.P2, 150)
     pins.digitalWritePin(DigitalPin.P16, 1)
     pins.digitalWritePin(DigitalPin.P15, 0)
-    basic.pause(500)
-    pins.analogWritePin(AnalogPin.P2, 0)
 }
 function REV_Left () {
     pins.analogWritePin(AnalogPin.P1, 150)
     pins.digitalWritePin(DigitalPin.P12, 1)
     pins.digitalWritePin(DigitalPin.P13, 0)
-    basic.pause(500)
+}
+function ALL_STOP () {
     pins.analogWritePin(AnalogPin.P1, 0)
+    pins.analogWritePin(AnalogPin.P2, 0)
 }
 basic.showIcon(IconNames.Asleep)
 pins.digitalWritePin(DigitalPin.P14, 1)
